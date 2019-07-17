@@ -7,3 +7,15 @@ express also utilizes the mysql wrapper (different from actual mysql), to send q
 mysql uses these queries to query the database.
 all this info then propogates up.
 
+NEED TO:
+- Install nodejs
+- Install npm (the package manager for node)
+This should work on mac: sudo apt-get install npm
+- pull the repository
+- Install ndoemon globally to run server tests (maybe optional)
+
+NOTE: Expresswrapper is horribly named, this is all the nodejs dependencies and the backend. I can't change it now tho.
+
+RESOURCES:
+https://www.youtube.com/watch?v=HPIjjFGYSJ4
+
