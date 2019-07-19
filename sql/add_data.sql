@@ -1,8 +1,6 @@
 -- a bunch of inserts to create data.
 -- I have no idea what x's by the line number mean below
 USE TMB;
-DELETE FROM User WHERE (ID = 'testusr1');
-DELETE FROM User WHERE (ID = 'testusr2');
 INSERT INTO User VALUES ('testusr1', 'test', '1', 'usr', 'password', 'tes1t@test.com');
 INSERT INTO User VALUES ('testusr2', 'OH SHIT', '2', 'A RAT', 'password', 'test2@test.com');
 INSERT INTO Admin VALUES('testusr1');
@@ -25,5 +23,3 @@ INSERT INTO Review VALUES ('chall68',	'1',	'3',	'4',	'Cool station. Kinda hot th
 INSERT INTO Admin_Add_Line VALUES ('L1', 'wwhite12',	'2019-05-10 08:32:00');
 INSERT INTO Admin_Add_Station VALUES ('Catalunya', 'wwhite12',	'2019-05-10 08:34:00');
 INSERT INTO Station_On_Line VALUES ('Catalunya', 'L1',	16);
-
-DELETE FROM ADMIN WHERE (ID = "wwhite12");

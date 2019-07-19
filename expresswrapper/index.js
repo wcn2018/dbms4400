@@ -54,27 +54,42 @@ app.get('/users', (req, res) => {
         }
     });
 });
+
 //FUNCTION FOR CHECKING FOR A GIVEN VALUE
 // ENTER THE *TABLE*, *COLUMN* AND *VALUE*
-function checkVal(table, column, value) {
-    app.get('/check_for_value', (req, res) => {
-        //format a query with the input values.
-        var query = CHECK_FOR_VAL.replace("*TABLE*", table);
-        query = query.replace("*COLUMN*", column);
-        query = query.replace("*VALUE*", value);
-        console.log(query);
-        connection.query(query, (err, results) => {
-            if(err) {
-                return res.send(err)
-            } else {
-                return res.json({
-                    data: results
-                })
-            }
-        });
-    })
-}
-checkVal("User", "ID", "'testusr2'");
+app.get('/check_for_value', (req, res) => {
+    //format a query with the input values.
+    var query = CHECK_FOR_VAL.replace("*TABLE*", req.query.table);
+    query = query.replace("*COLUMN*", req.query.column);
+    query = query.replace("*VALUE*", req.query.value);
+    console.log(query);
+    connection.query(query, (err, results) => {
+        if(err) {
+            return res.send(err)
+        } else {
+            return res.json({
+                data: results
+            })
+        }
+    });
+})
+
+app.get('/login_validate', (req, res) => {
+    var query = `SELECT U.ID, A.ID as AID, U.first_name, U.minit, U.last_name, U.password, U.passenger_email FROM User AS U LEFT OUTER JOIN Admin AS A ON (U.ID = *ID* AND U.ID = A.ID AND U.password = *pass*)`;
+    query = query.replace("*ID*", req.query.id);
+    query = query.replace("*pass*", req.query.pass);
+    console.log(query);
+    connection.query(query, (err, results) => {
+        if(err) {
+            return res.send(err)
+        } else {
+            return res.json({
+                data: results
+            })
+        }
+    });
+})
+
 //--------------------------END---------------------------
 
 app.listen(3000, () => {
