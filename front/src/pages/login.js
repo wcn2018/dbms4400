@@ -13,7 +13,8 @@ class login extends React.Component {
         usermatch: false,
         passmatch: false,
         logmatch: false,
-        admin: false
+        adminlog: false,
+        userlog: false,
       };
     }
   
@@ -96,10 +97,10 @@ class login extends React.Component {
                     if (tuple.ID === user) {
                         if (tuple.AID === user) {
                             console.log("logged in as admin");
-                            return;
+                            this.state.adminlog = true;
                         } else {
                             console.log("logged in as user");
-                            return;
+                            this.state.userlog = true;
                         }
                     }
                 }
@@ -108,11 +109,21 @@ class login extends React.Component {
         })
     }
 
+    // renderRedirect = () => {
+    //   if (this.state.adminlog) {
+    //     return <Redirect to= '/'/>
+    //   } else if (this.state.userlog) {
+    //     return <Redirect to= '/target'/>
+    //   } else {
+    //     return;
+    //   }
+    // }
+
     render() {
       return (
         <div>
           <h1>LOGIN</h1>
-          <div className="App">
+          <div className="login">
             {/* -----------------APP STARTS HERE-------------- */}
             <input type="text" 
               value={this.state.username}
@@ -125,7 +136,10 @@ class login extends React.Component {
             <button type="button"
               value="login"
               onClick={this.login.bind(this)}
-            >Login</button>  
+            >Login</button>
+            {/* <div>
+              {this.renderRedirect()}
+            </div> */}
           </div>
           <h2>no errors</h2>
         </div>
